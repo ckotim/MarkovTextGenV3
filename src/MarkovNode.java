@@ -6,7 +6,7 @@ public class MarkovNode {
 	
 	private String word;
 	private ArrayList<MarkovStringPair> links;
-	private MarkovNode collisionNode;
+	private MarkovNode next;
 
 	public MarkovNode(String word, String before, String after, long wordCount) {
 		this.word = word;
@@ -15,7 +15,7 @@ public class MarkovNode {
 		this.links = new ArrayList<MarkovStringPair>();
 		links.add(first);
 
-		this.collisionNode = null;
+		this.next = null;
 
 	}
 
@@ -24,12 +24,12 @@ public class MarkovNode {
 	}
 
 	public MarkovNode getNext() throws NoSuchElementException {
-		if (this.collisionNode != null) {
-			return this.collisionNode;
-		}
-		throw new NoSuchElementException("No more nodes in current branch");
+			return this.next;
 	}
 	
-	public 
+	public void setNext(MarkovNode nextNode){
+		this.next = nextNode;
+	}
+
 
 }
